@@ -13,12 +13,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Verificar estructura del portfolio
-        run: |
-          echo "=== PORTFOLIO CHECK ==="
-          echo "Archivos del repo:"
-          ls -R
-
       - name: Verificar README
         run: |
           if [ -f README.md ]; then
@@ -27,3 +21,6 @@ jobs:
             echo "ERROR: falta README"
             exit 1
           fi
+
+      - name: Mostrar estructura
+        run: ls -R
