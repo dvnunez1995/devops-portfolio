@@ -1,0 +1,22 @@
+name: Portfolio CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check README exists
+        run: test -f README.md
+
+      - name: Validate structure
+        run: |
+          echo "Validando portfolio..."
+          ls -R
+eof
