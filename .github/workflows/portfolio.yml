@@ -6,17 +6,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
+  portfolio-check:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Check README exists
-        run: test -f README.md
-
-      - name: Validate structure
+      - name: Verificar estructura del portfolio
         run: |
-          echo "Validando portfolio..."
+          echo "=== PORTFOLIO CHECK ==="
+          echo "Archivos del repo:"
           ls -R
+
+      - name: Verificar README
+        run: |
+          if [ -f README.md ]; then
+            echo "README OK"
+          else
+            echo "ERROR: falta README"
+            exit 1
+          fi
